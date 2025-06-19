@@ -16,36 +16,26 @@
             min-height: 100vh;
             background-color: #f0f2f5;
             margin: 0;
-            padding: 2px;
+            padding: 20px;
             box-sizing: border-box;
         }
 
         .flip-card-container {
-            width: 90%; /* Make card width responsive */
-            max-width: 300px; /* Set a maximum width for larger screens */
-            height: 0; /* Important for the padding-bottom aspect ratio trick */
-            padding-bottom: 133.33%; /* Maintain 3:4 aspect ratio (400/300 = 1.3333) */
-            position: relative; /* Needed for absolute positioning of inner elements */
+            width: 300px; /* Fixed width for the card */
+            height: 400px; /* Fixed height for the card */
             perspective: 1000px; /* Establishes 3D perspective for the flip effect */
             border-radius: 1rem; /* Rounded corners for the container */
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-            margin: 0 auto; /* Center the card horizontally */
-        }
-
-        .flip-card-inner, .flip-card-front, .flip-card-back {
-            position: absolute; /* Position inner elements absolutely within the container */
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            border-radius: 1rem; /* Rounded corners */
-            overflow: hidden; /* Ensures content stays within rounded corners */
         }
 
         .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
             transition: transform 0.8s; /* Smooth transition for the flip */
             transform-style: preserve-3d; /* Ensures child elements are positioned in 3D space */
+            border-radius: 1rem; /* Rounded corners inherited by inner content */
         }
 
         .flip-card-container.flipped .flip-card-inner {
@@ -53,17 +43,22 @@
         }
 
         .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
             -webkit-backface-visibility: hidden; /* Hides the back of the element during rotation in WebKit browsers */
             backface-visibility: hidden; /* Hides the back of the element during rotation */
+            border-radius: 1rem; /* Apply rounded corners to both sides */
             display: flex;
             justify-content: center;
             align-items: center;
+            overflow: hidden; /* Ensures content stays within rounded corners */
         }
 
         .flip-card-front {
-            background-color: #ffffff; /* White background for the front (though mostly covered by image) */
+            background-color: #ffffff; /* White background for the front */
             color: black;
-            /* Removed border here as requested */
+            border: 1px solid #e0e0e0; /* Light border for definition */
         }
 
         .flip-card-front img {
@@ -78,13 +73,25 @@
             color: white;
             transform: rotateY(180deg); /* Initially rotated 180 degrees so it's hidden */
             padding: 20px;
-            box-sizing: border-box; /* Include padding in the element's total width and height */
-            flex-direction: column; /* Stack text vertically */
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
             word-wrap: break-word; /* Ensures long text wraps */
         }
         .flip-card-back p {
             font-size: 1.125rem; /* Large text for readability */
             line-height: 1.6;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 640px) {
+            .flip-card-container {
+                width: 90%; /* Make card width responsive on small screens */
+                height: 350px; /* Adjust height for smaller screens */
+            }
         }
     </style>
 </head>
@@ -96,8 +103,8 @@
             <!-- Front side of the card, displaying an image -->
             <div class="flip-card-front">
                 <img
-                    src="Front_image.png"
-                    alt="Front Image"
+                    src="https://placehold.co/300x400/6366f1/FFFFFF?text=Click+to+Flip"
+                    alt="Placeholder Image - Click to Flip"
                     onerror="this.onerror=null;this.src='https://placehold.co/300x400/A0A0A0/FFFFFF?text=Image+Not+Found';"
                 >
             </div>
@@ -105,9 +112,9 @@
             <!-- Back side of the card, displaying text -->
             <div class="flip-card-back">
                 <p>
-                    With just three data points—name, date of birth, and address
-                    You can generate a home insurance quote in seconds. 
-                    Instant results allow you to focus on growing your business and meeting your clients' unique insurance needs.
+                    This is the back of the card! You can put any
+                    text content here. It's great for definitions,
+                    fun facts, or extra information.
                 </p>
             </div>
         </div>
