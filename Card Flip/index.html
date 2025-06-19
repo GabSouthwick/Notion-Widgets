@@ -13,23 +13,29 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            min-height: 1vh;
             background-color: #f0f2f5;
             margin: 0;
-            padding: 20px;
+            padding: 2px;
             box-sizing: border-box;
         }
 
         .flip-card-container {
-            width: 300px; /* Fixed width for the card */
-            height: 400px; /* Fixed height for the card */
+            width: 90%; /* Make card width responsive */
+            max-width: 300px; /* Set a maximum width for larger screens */
+            height: 0; /* Important for the padding-bottom aspect ratio trick */
+            padding-bottom: 133.33%; /* Maintain 3:4 aspect ratio (400/300 = 1.3333) */
+            position: relative; /* Needed for absolute positioning of inner elements */
             perspective: 1000px; /* Establishes 3D perspective for the flip effect */
             border-radius: 1rem; /* Rounded corners for the container */
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+            margin: 0 auto; /* Center the card horizontally */
         }
 
         .flip-card-inner {
-            position: relative;
+            position: asbsolute;
+            top:0;
+            left:0;
             width: 100%;
             height: 100%;
             text-align: center;
@@ -43,7 +49,9 @@
         }
 
         .flip-card-front, .flip-card-back {
-            position: absolute;
+            position: asbsolute;
+            top:0;
+            left:0;
             width: 100%;
             height: 100%;
             -webkit-backface-visibility: hidden; /* Hides the back of the element during rotation in WebKit browsers */
@@ -58,7 +66,6 @@
         .flip-card-front {
             background-color: #f6f4f8; /* White background for the front */
             color: black;
-            border: 1px solid #e0e0e0; /* Light border for definition */
         }
 
         .flip-card-front img {
