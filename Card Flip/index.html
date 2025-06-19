@@ -13,7 +13,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 1vh;
+            min-height: 100vh;
             background-color: #f0f2f5;
             margin: 0;
             padding: 20px;
@@ -21,6 +21,13 @@
         }
 
         .flip-card-container {
+            width: 300px; /* Fixed width for the card */
+            height: 400px; /* Fixed height for the card */
+            perspective: 1000px; /* Establishes 3D perspective for the flip effect */
+            border-radius: 1rem; /* Rounded corners for the container */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+        }
+        flip-card-inner {
             position: relative;
             width: 100%;
             height: 100%;
@@ -28,27 +35,14 @@
             transition: transform 0.8s; /* Smooth transition for the flip */
             transform-style: preserve-3d; /* Ensures child elements are positioned in 3D space */
             border-radius: 1rem; /* Rounded corners inherited by inner content */
-
         }
 
-        .flip-card-inner {
-            position: asbsolute;
-            top:0;
-            left:0;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            transition: transform 0.8s; /* Smooth transition for the flip */
-            transform-style: preserve-3d; /* Ensures child elements are positioned in 3D space */
-            border-radius: 1rem; /* Rounded corners inherited by inner content */
-        }
-
-        .flip-card-container.flipped .flip-card-inner {
+       .flip-card-container.flipped .flip-card-inner {
             transform: rotateY(180deg); /* Rotates the card 180 degrees on Y-axis when 'flipped' class is active */
         }
 
         .flip-card-front, .flip-card-back {
-            position: asbsolute;
+            position: absolute;
             width: 100%;
             height: 100%;
             -webkit-backface-visibility: hidden; /* Hides the back of the element during rotation in WebKit browsers */
@@ -63,6 +57,8 @@
         .flip-card-front {
             background-color: #f6f4f8; /* White background for the front */
             color: black;
+            border: 1px solid #e0e0e0; /* Light border for definition */
+
         }
 
         .flip-card-front img {
@@ -96,6 +92,7 @@
                 width: 90%; /* Make card width responsive on small screens */
                 height: 350px; /* Adjust height for smaller screens */
             }
+        }
         }
     </style>
 </head>
