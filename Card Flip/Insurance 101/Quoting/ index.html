@@ -21,8 +21,8 @@
         }
 
         .flip-card-container {
-            width: 300px; /* Fixed width for the card */
-            height: 400px; /* Fixed height for the card */
+            width: 150px; /* Fixed width for the card */
+            height: 200px; /* Fixed height for the card */
             perspective: 1000px; /* Establishes 3D perspective for the flip effect */
             border-radius: 1rem; /* Rounded corners for the container */
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
@@ -56,7 +56,7 @@
         }
 
         .flip-card-front {
-            background-color: #ffffff; /* White background for the front */
+            background-color: #f6f4f8; /* White background for the front */
             color: black;
             border: 1px solid #e0e0e0; /* Light border for definition */
         }
@@ -69,8 +69,8 @@
         }
 
         .flip-card-back {
-            background-color: #6366f1; /* Indigo 500 for the back */
-            color: white;
+            background-color: #ede6f2; /* Indigo 500 for the back */
+            color: Black;
             transform: rotateY(180deg); /* Initially rotated 180 degrees so it's hidden */
             padding: 20px;
             box-sizing: border-box;
@@ -87,10 +87,10 @@
         }
 
         /* Responsive adjustments */
-        @media (max-width: 640px) {
+        @media (max-width: 150px) {
             .flip-card-container {
                 width: 90%; /* Make card width responsive on small screens */
-                height: 350px; /* Adjust height for smaller screens */
+                height: 200px; /* Adjust height for smaller screens */
             }
         }
     </style>
@@ -103,8 +103,8 @@
             <!-- Front side of the card, displaying an image -->
             <div class="flip-card-front">
                 <img
-                    src="https://placehold.co/300x400/6366f1/FFFFFF?text=Click+to+Flip"
-                    alt="Placeholder Image - Click to Flip"
+                    src="Front_image.png"
+                    alt="Front Image"
                     onerror="this.onerror=null;this.src='https://placehold.co/300x400/A0A0A0/FFFFFF?text=Image+Not+Found';"
                 >
             </div>
@@ -112,9 +112,9 @@
             <!-- Back side of the card, displaying text -->
             <div class="flip-card-back">
                 <p>
-                    This is the back of the card! You can put any
-                    text content here. It's great for definitions,
-                    fun facts, or extra information.
+                    With just three data points—name, date of birth, and address.
+                    You can generate a home insurance quote in seconds. 
+                    Instant results allow you to focus on growing your business and meeting your clients' unique insurance needs.
                 </p>
             </div>
         </div>
