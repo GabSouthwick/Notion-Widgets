@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flip Card</title>
+    <!-- Tailwind CSS CDN for general styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 2px;
+            box-sizing: border-box;
+        }
+
+        .flip-card-container {
+            width: 200px; /* Fixed width for the card */
+            height: 200px; /* Fixed height for the card */
+            perspective: 1000px; /* Establishes 3D perspective for the flip effect */
+            border-radius: 1rem; /* Rounded corners for the container */
+           
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s; /* Smooth transition for the flip */
+            transform-style: preserve-3d; /* Ensures child elements are positioned in 3D space */
+            border-radius: 1rem; /* Rounded corners inherited by inner content */
+        }
+
+        .flip-card-container.flipped .flip-card-inner {
+            transform: rotateY(180deg); /* Rotates the card 180 degrees on Y-axis when 'flipped' class is active */
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden; /* Hides the back of the element during rotation in WebKit browsers */
+            backface-visibility: hidden; /* Hides the back of the element during rotation */
+            border-radius: 1rem; /* Apply rounded corners to both sides */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Ensures content stays within rounded corners */
+        }
+
+        .flip-card-front {
+            background-color: #f6f4f8; /* White background for the front */
+            color: black;
+            border: 1px solid #e0e0e0; /* Light border for definition */
+        }
+
+        .flip-card-front img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures the image covers the area without distortion */
+            border-radius: 1rem; /* Apply rounded corners to the image */
+        }
+
+        .flip-card-back {
+            background-color: #ede6f2; /* Indigo 500 for the back */
+            color: Black;
+            transform: rotateY(180deg); /* Initially rotated 180 degrees so it's hidden */
+            padding: 2px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            word-wrap: break-word; /* Ensures long text wraps */
+        }
+        .flip-card-back p {
+            font-size: .775rem; /* Large text for readability */
+            line-height: 1.6;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 200px) {
+            .flip-card-container {
+                width: 90%; /* Make card width responsive on small screens */
+                height: 200px; /* Adjust height for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Main container for the flip card, centered on the page -->
+    <div class="flip-card-container" id="flipCard">
+        <!-- Inner container that performs the flip transformation -->
+        <div class="flip-card-inner">
+            <!-- Front side of the card, displaying an image -->
+            <div class="flip-card-front">
+                <img
+                    src="Front_image.png"
+                    alt="Front Image"
+                    onerror="this.onerror=null;this.src='https://placehold.co/300x400/A0A0A0/FFFFFF?text=Image+Not+Found';"
+                >
+            </div>
+
+            <!-- Back side of the card, displaying text -->
+            <div class="flip-card-back">
+                <p>
+                  At Openly, we care about our customers. Whether you're an independent agent or a policyholder, we're dedicated to providing excellent service, 
+                  from easy policy management to smooth claims and comprehensive coverage.  
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get the flip card container element by its ID
+        const flipCard = document.getElementById('flipCard');
+
+        // Add a click event listener to the flip card container
+        flipCard.addEventListener('click', () => {
+            // Toggle the 'flipped' class on the container to trigger the CSS flip animation
+            flipCard.classList.toggle('flipped');
+        });
+    </script>
+</body>
+</html>
